@@ -293,4 +293,24 @@ const work: Work = {
   description: `Design and dev projects by ${person.name}`,
 };
 
-export { person, social, home, about, work };
+const newsletter: Newsletter = {
+  display: false,
+  title: <>Newsletter</>,
+  description: <></>,
+};
+
+const blog: Blog = {
+  label: "Blog",
+  title: "Blog",
+  description: "",
+  display: false,
+};
+
+const gallery: Gallery = {
+  label: "Gallery",
+  title: "Gallery",
+  images: [],
+  display: false,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery };
