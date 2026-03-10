@@ -1,4 +1,4 @@
-import { About, Home, Person, Social, Work } from "@/types";
+import { About, Home, Person, Social, Work, Newsletter, Blog, Gallery } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -8,7 +8,7 @@ const person: Person = {
   role: "Data Analyst | Data Scientist",
   avatar: "/images/avatar.jpg",
   email: "bprakha06@gmail.com",
-  location: "Bandung, Indonesia",
+  location: "Bandung, Indonesia" as any,
   languages: ["English", "Bahasa"],
 };
 
@@ -303,14 +303,15 @@ const blog: Blog = {
   label: "Blog",
   title: "Blog",
   description: "",
-  display: false,
+  path: "/blog",
 };
 
 const gallery: Gallery = {
   label: "Gallery",
   title: "Gallery",
+  description: "",
   images: [],
-  display: false,
+  path: "/gallery",
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
