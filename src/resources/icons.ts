@@ -20,6 +20,7 @@ import {
   PiGridFourDuotone,
   PiBookBookmarkDuotone,
   PiImageDuotone,
+  PiFileTextDuotone,
 } from "react-icons/pi";
 
 import {
@@ -27,9 +28,19 @@ import {
   SiNextdotjs,
   SiFigma,
   SiSupabase,
+  SiPython,
+  SiMysql,
+  SiLaravel,
+  SiGooglecolab,
+  SiJupyter,
+  SiLinux,
+  SiLooker,
 } from "react-icons/si";
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
+import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, FaJava, } from "react-icons/fa6";
+import { TbLetterR, TbBrandPowershell } from "react-icons/tb";
+import { BiLogoMicrosoft } from "react-icons/bi";
+import { VscDatabase } from "react-icons/vsc";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -64,6 +75,21 @@ export const iconLibrary: Record<string, IconType> = {
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  paper: PiFileTextDuotone,
+  python: SiPython,
+  java: FaJava,
+  r: TbLetterR,
+  powerbi: BiLogoMicrosoft,
+  microsoftoffice: BiLogoMicrosoft,
+  looker: SiLooker,
+  rstudio: TbLetterR,
+  mysql: SiMysql,
+  oracle: VscDatabase,
+  laravel: SiLaravel,
+  googlecolab: SiGooglecolab,
+  jupyter: SiJupyter,
+  microsoftfabric: BiLogoMicrosoft,
+  linux: SiLinux,
 };
 
 export type IconLibrary = typeof iconLibrary;

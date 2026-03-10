@@ -1,55 +1,47 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Home, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Rakha Bayu",
+  lastName: "Pratama",
+  name: `Rakha Bayu Pratama`,
+  role: "Data Analyst | Data Scientist",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-};
-
-const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  email: "bprakha06@gmail.com",
+  location: "Bandung, Indonesia",
+  languages: ["English", "Bahasa"],
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
+  
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/rakhabayupratama",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/rakhabayupratama/",
     essential: true,
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.instagram.com/rakhabyprtm/",
     essential: true,
   },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
+    link: "https://mail.google.com/mail/?view=cm&to=bprakha06@gmail.com",
+    essential: true,
+  },
+  {
+    name: "WhatsApp",
+    icon: "whatsapp",
+    link: "https://wa.me/6281220848242",
     essential: true,
   },
 ];
@@ -60,23 +52,23 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Turning raw data into meaningful insights</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Latest Projects</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Recommender System for App Store Applications Based on Heterogeneous Graph Neural Networks
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/thesis",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    I'm Rakha, a Data Analyst | Data Scientist based in <Text as="span" weight="strong">Bandung</Text>. I transform complex datasets into clear, actionable insights that drive smarter decisions.
 </>
   ),
 };
@@ -93,212 +85,212 @@ const about: About = {
   avatar: {
     display: true,
   },
-  calendar: {
+  cv: {
     display: true,
-    link: "https://cal.com",
+    link: "/Resume-Rakha Bayu Pratama-2026.pdf",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Fresh graduate in Informatics with a strong interest in data analytics, data science, and machine learning. Experienced in developing end-to-end machine learning projects and conducting data analysis. Proficient in Python, SQL, and Power BI. Analytical, reliable, and effective working independently or in teams.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true, 
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Telkomsel",
+        timeframe: "July 1, 2025 - August 31, 2025",
+        role: "Data Analyst Intern",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Automated monthly asset capitalization reports by integrating Excel, MySQL (SQL queries), and Power BI, transforming manual reporting processes into a structured dashboard system.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Designed and developed interactive dashboards to monitor financial and asset-related KPIs, enabling faster and more accurate management decision-making.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Performed data cleaning, validation, and reconciliation to ensure accuracy and consistency across multiple data sources.
+          </>,
+          <>
+            Improved reporting efficiency by reducing manual processing time and minimizing human error through data automation.
           </>,
         ],
         images: [],
-      },
+      }
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true, 
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Telkom University",
+        description: <>Bachelor of Informatics - GPA 3.56/4.00</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true, 
+    title: "Skills",
     skills: [
       {
-        title: "Figma",
+        title: "Certification",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Credentials that validate my technical knowledge and commitment to continuous learning in the fields of data, AI, and cloud technology.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "Microsoft Certified: Azure AI Fundamentals",
+            icon: "microsoftoffice",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
+            src: "/images/Cert4228834162.jpg",
+            alt: "Microsoft Certified: Azure AI Fundamentals",
             width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            height: 12,
           },
         ],
       },
       {
-        title: "Next.js",
+        title: "Soft Skills",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Interpersonal and professional skills developed through academic projects, organizational experience, and real-world internship environments.</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Teamwork / Collaboration",
+          },
+          {
+            name: "Communication",
+          },
+          {
+            name: "Analytical thinking",
+          },
+          {
+            name: "Problem solving",
+          },
+          {
+            name: "Attention to detail",
+          },
+          {
+            name: "Leadership",
+          },
+          {
+            name: "Time management",
+          },
+          {
+            name: "Information management",
+          },
+          {
+            name: "Adaptability",
+          },
+          {
+            name: "Initiative",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Hard Skills",
+        description: (
+          <>A versatile technical stack spanning data analysis, visualization, database management, and software development — built through coursework, projects, and hands-on internship experience.</>
+        ),
+        tags: [
+          {
+            name: "Python",
+            icon: "python",
+          },
+          {
+            name: "R",
+            icon: "",
+          },
+          {
+            name: "Microsoft Power BI",
+            icon: "powerbi",
+          },
+          {
+            name: "Tableau",
+            icon: "",
+          },
+          {
+            name: "Microsoft Office",
+            icon: "microsoftoffice",
+          },
+          {
+            name: "Google Looker Studio",
+            icon: "looker",
+          },
+          {
+            name: "R Studio",
+            icon: "",
+          },
+          {
+            name: "MySQL",
+            icon: "mysql",
+          },
+          {
+            name: "Oracle",
+            icon: "oracle",
+          },
+          {
+            name: "Laravel",
+            icon: "laravel",
+          },
+          {
+            name: "Google Colab",
+            icon: "googlecolab",
+          },
+          {
+            name: "Jupyter Notebook",
+            icon: "jupyter",
+          },
+          {
+            name: "Microsoft Fabric",
+            icon: "microsoftfabric",
+          },
+          {
+            name: "GitHub",
+            icon: "github",
+          },
+          {
+            name: "Linux",
+            icon: "linux",
+          },
+          {
+            name: "Figma",
+            icon: "figma",
+          },
+          {
+            name: "Java",
+            icon: "java",
           },
           {
             name: "Next.js",
             icon: "nextjs",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Technical Writing",
+            icon: "",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
     ],
   },
 };
 
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
-};
-
 const work: Work = {
   path: "/work",
-  label: "Work",
+  label: "Projects",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
 };
 
-const gallery: Gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
-};
-
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, home, about, work };

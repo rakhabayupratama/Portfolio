@@ -1,0 +1,128 @@
+---
+title: "Recommender System for App Store Applications Based on Heterogeneous Graph Neural Networks"
+publishedAt: "2026-02-25"
+summary: "A mobile application recommendation system built using Heterogeneous Graph Neural Networks (HGNN) on the App Store dataset, achieving 93% Precision@30 and 93% NDCG@30 with the App–Genre–Similarity model."
+team:
+  - name: "Rakha Bayu Pratama"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/rakhabayupratama/"
+  - name: "Fitriyani"
+  - name: "Danang Triantoro Murdiansyah"
+paper: "https://ieeexplore.ieee.org/document/11399525"
+github: "https://github.com/rakhabayupratama/Recommender-System-for-App-Store-Applications-Based-on-Heterogeneous-Graph-Neural-Networks"
+---
+
+## Overview
+
+This research implements a **mobile application recommendation system** using a **Heterogeneous Graph Neural Network (HGNN)** on the Apple App Store dataset. The system models relationships between applications based on content features, genre, rating group, and app similarity, without relying on direct user interaction data. Six model variants were evaluated to analyze the contribution of different edge types, with the best model achieving a **Precision@30 of 93%** and **NDCG@30 of 93%**.
+
+This project was submitted as a final manuscript at **Telkom University**, School of Computing.
+
+---
+
+## Problem Statement
+
+The rapid growth of applications in the App Store has created an **information overload** problem, making it difficult for users to discover apps that match their needs. Traditional recommendation approaches, Collaborative Filtering, Content-Based Filtering, and Hybrid Filtering, each have significant limitations: cold start problems, dependence on user interaction data, and implementation complexity.
+
+This study proposes a graph-based approach using Heterogeneous Graph Neural Networks, which can model complex relationships between entities without requiring user interaction, making it applicable even in cold-start scenarios.
+
+---
+
+## Dataset
+
+- **Source:** [App Store Dataset – Kaggle](https://www.kaggle.com/datasets/ysf12ff/app-store-dataset/data) by Yousuf Mulla
+- **Total data:** 7,195 applications after preprocessing
+- **Attributes used:** `track_name`, `size_bytes`, `price`, `user_rating`, `rating_count_tot`, `prime_genre`
+- **Node types:** 3 - Apps (7,195), Genres (23 categories), Rating Groups (5 groups)
+
+---
+
+## Methodology
+
+### 1. Data Preprocessing
+- Selected 6 relevant columns from the original 16-column dataset
+- Removed rows with missing values and duplicates
+- Converted `size_bytes` to megabytes
+- Grouped `user_rating` into 5 categories: Very Low (0–1), Low (1–2), Medium (2–3), High (3–4), Very High (4–5)
+- Standardized numerical features using `StandardScaler`
+
+### 2. Heterogeneous Graph Formation
+Built a heterogeneous graph using **PyTorch Geometric (PyG)** with the following structure:
+- **Node types:** `app`, `genre`, `rating_group`
+- **Edge types:** `app–has_genre–genre`, `app–has_rating–rating_group`, `app–sim–app`
+- 20% of genre edges were masked for validation to evaluate performance on unseen relationships
+- App similarity edges were constructed by sampling up to 10 same-genre neighbors per app, generating **35,975 positive training pairs**
+
+### 3. Model Architecture (HGNN)
+The model follows an inner–outer module architecture:
+
+- **Node-Type Specific Transformation** - Each node type's initial features are projected into a shared hidden dimension using type-specific weight matrices
+- **Inner Module (Node-Level Attention)** - Uses **GATConv** (Graph Attention Convolution) with 4 attention heads to aggregate neighbor information along specific meta-paths
+- **Outer Module (Path-Level Attention)** - Combines embeddings from different meta-paths using path-level attention weights
+- **Output** - 64-dimensional L2-normalized embedding vector per app node
+
+### 4. Training
+- **Loss function:** InfoNCE Loss — maximizes similarity between positive pairs and minimizes it for 5 randomly sampled negative pairs per batch
+- **Optimizer:** Adam (lr = 5×10⁻⁴, weight decay = 5×10⁻⁴)
+- **Epochs:** up to 20, with early stopping (patience = 3)
+- **Batch size:** 128
+- **Hardware:** Kaggle Notebook with T4 x2 GPU (CUDA)
+- **Split:** 80% training edges / 20% validation edges
+
+### 5. Evaluation
+Three metrics were used at **K=30** (top-30 recommendations):
+- **Precision@K** - proportion of top-K recommended items that are relevant
+- **Recall@K** - proportion of all relevant items captured in top-K
+- **NDCG@K** - normalized discounted cumulative gain, measuring ranking quality
+
+---
+
+## Results
+
+| Model | Precision@30 | Recall@30 | NDCG@30 |
+|---|---|---|---|
+| App–Genre Only | 86% | 8% | 86% |
+| App–Rating Only | 32% | 1% | 31% |
+| App–App Similarity Only | 64% | 3% | 64% |
+| App–Genre–Rating | 86% | 8% | 87% |
+| **App–Genre–Similarity** | **93%** | **8%** | **93%** |
+| App–Rating–Similarity | 62% | 2% | 63% |
+
+The **App–Genre–Similarity** model achieved the best performance across all metrics. The combination of genre relationships and app similarity edges produced the most informative embeddings, capturing semantic closeness between applications effectively.
+
+The **App–Rating Only** model performed worst, confirming that rating group relationships alone are too general and noisy to produce meaningful recommendations.
+
+---
+
+## Application Recommendation Demo
+
+Using the best model, the system was tested with **Facebook** (Social Networking) as input. All 5 recommended apps belong to the same genre:
+
+| Recommended App | Genre | Rating |
+|---|---|---|
+| Down To Lunch | Social Networking | 4.0 |
+| Threema | Social Networking | 4.5 |
+| Houseparty – Group Video Chat | Social Networking | 4.0 |
+| Weibo | Social Networking | 3.5 |
+| Who Deleted Me? for Facebook | Social Networking | 1.5 |
+
+The model was also tested on **Instagram** and **Clash of Clans**, consistently recommending same-genre applications.
+
+A **t-SNE embedding visualization** confirmed that apps with the same genre cluster together in the 2D embedding space, demonstrating strong semantic feature representation by the App–Genre–Similarity model.
+
+---
+
+## Tools & Technologies
+
+- **Python** - core programming language
+- **PyTorch & PyTorch Geometric (PyG)** - HGNN model implementation, GATConv, HeteroConv
+- **Scikit-learn** - preprocessing (LabelEncoder, StandardScaler, cosine similarity), t-SNE
+- **NumPy & Pandas** - data manipulation and analysis
+- **Matplotlib** - embedding visualization (t-SNE plot)
+- **Kaggle Notebook** - development environment with T4 x2 GPU
+
+---
+
+## Reflection
+
+This research was a deep dive into graph-based machine learning, and one of the most technically challenging projects I have worked on. Building a heterogeneous graph from scratch, defining node types, edge types, and meta-paths, required a thorough understanding of both graph theory and the PyTorch Geometric API. The most valuable insight was discovering how much the choice of edge types impacts model performance: simply adding rating edges alongside genre edges did not improve results, while adding app similarity edges pushed precision from 86% to 93%. This highlights that more data is not always better, the quality and relevance of relationships matter far more.

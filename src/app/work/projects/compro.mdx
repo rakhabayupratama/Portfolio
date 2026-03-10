@@ -1,0 +1,162 @@
+---
+title: "Software Requirement Specification – PPE Detection Dashboard"
+publishedAt: "2025-12-01"
+summary: "A Software Requirement Specification (SRS) for an AI-powered PPE violation detection dashboard using YOLOv8 and CCTV integration, developed as a Computing Project at Telkom University."
+team:
+  - name: "Rakha Bayu Pratama"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/rakhabayupratama/"
+  - name: "Muhammad Jibran Aflah"
+  - name: "Natasha Nuraini Wirawan"
+  - name: "Kholid Fathan M"
+  - name: "Muhammad Rifqi Rabbani"
+  - name: "Jason Jeremy Butar Butar"
+  - name: "Naufalino Farhan Rizq"
+link: "/ComPro-SRS_LZD_3.pdf"
+---
+
+## Overview
+
+This document is a **Software Requirement Specification (SRS)** for a **PPE Detection Dashboard**, an AI-powered system designed to automatically detect Personal Protective Equipment (PPE) violations in the workplace using CCTV feeds and YOLOv8 object detection. The project was developed as a Computing Project at **Telkom University**, Faculty of Informatics, in December 2025.
+
+The system functions as a **decision support tool** that reduces reliance on manual video monitoring by automatically generating violation candidates, which are then reviewed and confirmed by human operators before being recorded as validated violations.
+
+---
+
+## Problem Statement
+
+Manual monitoring of PPE compliance in operational areas is time-consuming, error-prone, and unsustainable at scale. With multiple CCTV cameras covering large work areas, human operators cannot realistically review all footage in real time. This system addresses the problem by automating the initial detection layer while keeping humans in the loop for final validation, ensuring both efficiency and accuracy.
+
+---
+
+## System Scope
+
+The system covers the full pipeline from CCTV input to validated violation records:
+
+> **Camera → AI Detection Engine → Violation Candidate → User Confirmation Interface → Confirmed / Rejected Violation**
+
+Target PPE items for detection: **hardhat, coverall, gloves, boots**
+
+The system is **not standalone** — it integrates with existing CCTV infrastructure and IT networks as an intelligent layer between the cameras and the safety team.
+
+---
+
+## User Roles
+
+| Role | Responsibilities |
+|---|---|
+| **Reviewer / Validator** | Reviews AI-generated violation candidates, confirms true violations or rejects false detections |
+| **Tim Safety (HSE)** | Receives confirmed violation alerts, views violation history and reports for field follow-up |
+| **IT / Admin** | Manages user accounts, roles, system configuration, camera integration, and audit logs |
+| **Management / Stakeholder** | Read-only access to KPI summaries and violation trend reports |
+
+---
+
+## Key Features
+
+### Authentication & Access Control
+- Role-based login system (RBAC) restricting access to visual evidence, violation data, reports, and system configuration
+- Secure logout and session management
+- Audit log for all access and role change activities
+
+### AI Detection Module (YOLOv8)
+- Processes CCTV stream/frame input using a trained **YOLOv8** model
+- Detects presence or absence of PPE items (hardhat, coverall, gloves, boots)
+- Generates **violation candidates** when required PPE is not detected
+- Produces bounding boxes and confidence scores for each detection
+
+### Human-in-the-Loop Confirmation
+- Reviewers can confirm a candidate as a **True Violation** or reject it as a **False Detection**
+- Only authorized roles (Reviewer/Validator or Admin) can change candidate status
+- System records who confirmed, when, and the final status
+
+### Dashboard (Verification & Confirmation)
+- Displays violation candidate list with status (Candidate / Confirmed / Rejected)
+- Shows visual evidence: snapshot/frame/clip, bounding box, confidence score, timestamp, location, camera ID
+- Supports filter by date, location, violation type, and status
+- Summary counts per status category
+- Optimized for fast review - key information understandable within 3–5 seconds
+
+### Alert & Notification
+- Triggers notifications to the safety team upon violation confirmation
+- Supports integration with external messaging/email platforms (optional)
+- Records notification delivery status (delivered / failed)
+
+### Reporting & Analytics
+- Validated violation statistics for K3/HSE decision-making
+- Summary grouped by date, location, and violation type
+- Historical trend visualization for compliance evaluation
+
+---
+
+## Functional Requirements Summary
+
+### Login / Authentication
+- **FR-AUTH-01** - User login for dashboard access
+- **FR-AUTH-02** - Role-based access control
+- **FR-AUTH-03** - Secure logout
+
+### CCTV Integration
+- **FR-CCTV-01** - Capture stream/frame from CCTV sources
+- **FR-CCTV-02** - Record camera metadata (ID, location)
+- **FR-CCTV-03** - Automatic reconnect on stream disconnection
+
+### AI/ML Module
+- **FR-AI-01** - YOLOv8 inference on CCTV frames
+- **FR-AI-02** - PPE item detection (hardhat, coverall, gloves, boots)
+- **FR-AI-03** - Missing PPE identification and violation candidate generation
+- **FR-AI-04** - Bounding box output for visual evidence
+- **FR-AI-05** - Confidence score per detection
+
+### Violation Management
+- **FR-EVT-01 to 06** - Create, store, filter, and retrieve violation candidates and history
+
+### Confirmation Module
+- **FR-CONF-01** - Confirm as True Violation
+- **FR-CONF-02** - Reject as False Detection
+- **FR-CONF-03** - Log confirmation details (who, when, status, notes)
+- **FR-CONF-04** - Prevent unauthorized role from changing status
+
+---
+
+## Non-Functional Requirements
+
+| Category | Key Requirement |
+|---|---|
+| **Performance** | AI detection latency < 2 seconds; candidate visible on dashboard within 5 seconds |
+| **Security** | HTTPS mandatory; RBAC enforced; audit log for sensitive activities; CCTV data privacy compliance |
+| **Usability** | Non-technical users can operate dashboard; status recognizable within 3 seconds |
+| **Reliability** | 24/7 uptime ≥ 99%; auto-reconnect on CCTV instability; backup & recovery plan |
+| **Maintainability** | Technical documentation, deployment guide, and user manual provided |
+| **Portability** | Accessible via modern browsers on Windows/macOS/Linux; supports on-premise or edge deployment |
+
+---
+
+## System Architecture
+
+The system consists of the following integrated components:
+
+- **CCTV / Video Stream Source** - Physical cameras providing stream/frame input via LAN/RTSP/NVR
+- **AI Inference Engine** - YOLOv8 model running on GPU/CPU server, processing frames and generating violation candidates
+- **Backend / API** - FastAPI or Flask service handling data flow between inference engine, database, and dashboard
+- **Dashboard UI** - Streamlit or HTML-based interface for verification, confirmation, and reporting
+- **Database** - SQLite or MySQL storing candidates, confirmation results, audit logs, and validated violation history
+- **Notification Service** - External messaging/email integration for confirmed violation alerts to the safety team
+
+---
+
+## Tools & Technologies
+
+- **YOLOv8 (YOLO)** - AI object detection model for PPE identification
+- **Python** - Core implementation language for AI/ML and backend
+- **FastAPI / Flask** - Backend API service (optional, based on technical design)
+- **Streamlit / HTML** - Dashboard UI
+- **SQLite / MySQL** - Database for violation records, audit logs, and reports
+- **RTSP / NVR** - CCTV stream protocol
+- **HTTPS / RBAC** - Security layer for access control
+
+---
+
+## Reflection
+
+Contributing to this SRS as both a team member and document author (Version 2, January 2026) gave me a deeper appreciation for the importance of thorough requirements engineering before any line of code is written. Defining functional and non-functional requirements with precision, especially for a safety-critical system like PPE monitoring, directly determines how reliable and trustworthy the final product will be. The human-in-the-loop design principle was a key architectural decision that balances AI automation with human judgment, which is essential when the stakes involve workplace safety.

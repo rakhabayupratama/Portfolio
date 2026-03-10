@@ -1,0 +1,98 @@
+---
+title: "Big Data & Artificial Intelligence Project"
+publishedAt: "2025-06-09"
+summary: "Sentiment analysis on Amazon Books Reviews using Logistic Regression and PySpark, classifying user reviews into positive, neutral, and negative categories."
+team:
+  - name: "Rakha Bayu Pratama"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/rakhabayupratama/"
+  - name: "Alfi Riansyach Hardjasasmita"
+  - name: "Luna Aulia"
+  - name: "Muhammad Alvino"
+  - name: "Raflee Caesar Dano Malik"
+github: "https://github.com/rakhabayupratama/BigDataAI"
+---
+
+## Overview
+
+This project implements a **Sentiment Analysis** system on Amazon Books Reviews data using two complementary approaches: a classical machine learning pipeline with **Scikit-learn** and a scalable big data pipeline using **Apache Spark (PySpark)**. The goal was to classify book reviews into three sentiment categories, **positive**, **neutral**, and **negative**, based on the review summary text and score.
+
+---
+
+## Problem Statement
+
+Online book reviews contain valuable signals about reader satisfaction, but manually reading thousands of reviews is not scalable. This project aimed to build an automated NLP model capable of classifying sentiments from review text, while also exploring how big data tools like Spark can handle the same task at scale.
+
+---
+
+## Dataset
+
+- **Source:** [Amazon Books Reviews - Kaggle](https://www.kaggle.com/datasets/mohamedbakhet/amazon-books-reviews?select=Books_rating.csv)
+- **Features used:** `review/score` (1-5 rating) and `review/summary` (short review text)
+- **Sentiment labeling rule:**
+  - Score ≤ 2 → **Negative**
+  - Score = 3 → **Neutral**
+  - Score ≥ 4 → **Positive**
+
+---
+
+## Workflow
+
+### 1. Data Preprocessing
+
+- Loaded dataset and selected only the two relevant columns: `review/score` and `review/summary`
+- Removed null values and duplicate entries
+- Applied text cleaning: lowercasing, removing non-alphabetic characters, and stripping extra whitespace
+- Applied tokenization, stopword removal, and lemmatization using **NLTK**
+- Exported the cleaned dataset as `preprocessed_books_reviews.csv`
+
+### 2. Feature Extraction
+
+- Used **TF-IDF Vectorizer** (max 5,000 features) to convert cleaned text into numerical feature vectors
+- Split data into **80% training / 20% testing** with stratified sampling to maintain class balance
+
+### 3. Model Training - Scikit-learn
+
+- Trained a **Logistic Regression** model (max_iter=1000) on the TF-IDF features
+- Evaluated using accuracy score, classification report (precision, recall, F1-score), and confusion matrix
+
+### 4. Feature Importance Analysis
+
+- Extracted TF-IDF coefficients from the trained Logistic Regression model
+- Identified **Top 10 positive features** (words most associated with positive sentiment) and **Top 10 negative features** (words most associated with negative sentiment)
+
+### 5. Big Data Integration - PySpark
+
+- Initialized a **SparkSession** and loaded the dataset as a Spark DataFrame
+- Rebuilt the full preprocessing and modeling pipeline using PySpark ML:
+  - **Tokenizer** → **StopWordsRemover** → **HashingTF** (10,000 features) → **IDF** → **Logistic Regression**
+- Assembled all stages into a single **ML Pipeline** for reproducibility
+- Evaluated the Spark model using **Accuracy** and **F1 Score** via `MulticlassClassificationEvaluator`
+
+---
+
+## Key Visualizations
+
+- **Bar Chart (Sentiment Distribution)** - Visualizes the class imbalance across negative, neutral, and positive reviews using Seaborn
+- **Confusion Matrix Heatmap** - Shows true vs. predicted labels to evaluate model misclassification patterns
+- **Classification Report Heatmap** - Displays precision, recall, and F1-score per class in a color-coded matrix
+- **Top 10 Positive Features (Horizontal Bar Chart)** - Words with the highest positive Logistic Regression coefficients
+- **Top 10 Negative Features (Horizontal Bar Chart)** - Words with the strongest negative coefficients
+
+---
+
+## Tools & Technologies
+
+- **Google Colab** - development environment and notebook runtime
+- **Python** - core programming language
+- **PySpark** - big data processing and ML pipeline
+- **Scikit-learn** - classical ML modeling (Logistic Regression, TF-IDF, evaluation metrics)
+- **NLTK** - text preprocessing (tokenization, stopword removal, lemmatization)
+- **Pandas & NumPy** - data manipulation
+- **Matplotlib & Seaborn** - data visualization
+
+---
+
+## Reflection
+
+This project reinforced the importance of combining **classical ML** and **big data frameworks** to tackle the same problem at different scales. Building the same sentiment analysis pipeline twice, once with Scikit-learn and once with PySpark, gave a clear understanding of the tradeoffs between ease of use and scalability. It also highlighted how preprocessing quality directly impacts model performance, as clean, well-tokenized text significantly improved classification accuracy.

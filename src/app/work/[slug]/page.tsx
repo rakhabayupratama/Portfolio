@@ -121,6 +121,25 @@ export default async function Project({
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
       )}
+      {(post.metadata.link || post.metadata.github || post.metadata.paper) && (
+  <Row gap="12" horizontal="center">
+    {post.metadata.link && (
+      <Button href={post.metadata.link} variant="secondary" suffixIcon="arrowUpRight">
+        View Project
+      </Button>
+    )}
+    {post.metadata.github && (
+      <Button href={post.metadata.github} variant="secondary" suffixIcon="arrowUpRight">
+        Source Code
+      </Button>
+    )}
+    {post.metadata.paper && (
+      <Button href={post.metadata.paper} variant="secondary" suffixIcon="arrowUpRight">
+        Paper
+      </Button>
+    )}
+  </Row>
+)}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
       </Column>

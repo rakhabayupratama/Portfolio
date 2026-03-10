@@ -1,0 +1,87 @@
+---
+title: "Telkomsel Internship Project"
+publishedAt: "2025-08-31"
+summary: "A PO Absorption monitoring dashboard built during a Data Analyst internship at Telkomsel, tracking Purchase Order capitalization, Goods Receipt status, and vendor performance using Excel, MySQL, and Power BI."
+images:
+  - "/images/projects/tsel/Telkomsel Internship Project-1.jpg"
+  - "/images/projects/tsel/Telkomsel Internship Project-2.jpg"
+  - "/images/projects/tsel/Telkomsel Internship Project-3.jpg"
+  - "/images/projects/tsel/Telkomsel Internship Project-4.jpg"
+  - "/images/projects/tsel/Telkomsel Internship Project-5.jpg"
+team:
+  - name: "Rakha Bayu Pratama"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/rakhabayupratama/"
+link: "/Telkomsel Internship Project.pdf"
+---
+
+## Overview
+
+This project was developed during a **2-month internship at Telkomsel** (July-August 2025) as part of the Data Analyst role in the **Asset Capitalization Support** team. The deliverable was an interactive **PO Absorption Monitoring Dashboard** built in Power BI, designed to give the team a real-time view of Purchase Order (PO) capitalization progress, budget utilization, and vendor performance across the organization.
+
+---
+
+## Problem Statement
+
+The Asset Capitalization Support team at Telkomsel was managing PO absorption monitoring through a **manual Excel dashboard** that required regular manual updates, a process that was time-consuming and prone to inconsistency. There was a clear need for an automated, interactive dashboard that could reflect the latest data without manual intervention, and that the team could adopt immediately into their daily workflow.
+
+---
+
+## Dashboard Pages
+
+### 1. PO Absorption (Overview)
+The main landing page of the dashboard, providing a high-level summary of overall PO absorption performance. Connected to live data with the last refresh timestamp displayed for transparency.
+
+### 2. PO Capitalization
+Tracks the lifecycle of Purchase Orders from release to capitalization. Key components include:
+- **PO Released** - total value and count of released purchase orders
+- **Goods Receipt (GR)** - GR completion status per PO
+- **Top Summary PO by Year** - year-over-year comparison of PO capitalization progress
+- Summary cards displaying key metrics across multiple dimensions
+
+### 3. Capex Paper
+Compares actual PO data against the approved Capital Expenditure (Capex) budget paper. Key views include:
+- **PO vs Capex Paper** - variance analysis between planned budget and actual PO values
+- **Capitalization 2025 vs Capex Paper** - progress of 2025 capitalizations relative to budget
+- **Balance AUC (Assets Under Construction)** - remaining balance of assets yet to be capitalized
+
+### 4. GR 0 (Zero Goods Receipt)
+A focused page highlighting Purchase Orders with no Goods Receipt recorded - indicating potential delays, open commitments, or items requiring follow-up. Displayed as pivot tables for easy filtering by department and vendor.
+
+### 5. Top Ten Remaining Vendor & Fund Center
+Ranks the top 10 vendors and fund centers with the highest remaining PO balances, enabling the team to prioritize follow-ups and improve absorption rates before period-end closing.
+
+---
+
+## Workflow
+
+1. **Data Extraction (SAP)** - Raw procurement and financial data was extracted from **SAP** by the team admin and handed over in Excel format
+2. **Data Cleaning (Excel)** - Cleaned and reformatted the data in **Microsoft Excel**, focusing on standardizing date formats and numeric values to match MySQL import requirements
+3. **Data Import (MySQL)** - Converted the cleaned Excel file to **CSV** and imported it into **MySQL** as the structured data source
+4. **Dashboard Development (Power BI)** - Connected **Power BI** directly to MySQL and built the full interactive dashboard with 5 report pages, including slicers, KPI cards, tables, and charts
+5. **Export & Presentation (PowerPoint)** - Exported the completed dashboard into **PowerPoint** format for final presentation and documentation to the team
+
+---
+
+## Tools & Technologies
+
+- **SAP** - source system for raw procurement and asset data (extracted by admin)
+- **Microsoft Excel** - data cleaning, date and numeric formatting for MySQL compatibility
+- **MySQL** - structured data storage and querying after CSV import
+- **Power BI** - interactive dashboard design, data modeling, and visualization
+- **PowerPoint** - final export and presentation of dashboard results
+
+---
+
+## Key Outcomes
+
+- **Replaced the manual Excel dashboard** with a fully automated, interactive Power BI dashboard that the team adopted directly into their workflow
+- Enabled the Asset Capitalization Support team to monitor PO absorption status without manual data updates
+- Surfaced the top vendors and fund centers with pending balances, supporting targeted follow-ups before period-end closing
+- Improved visibility into GR 0 items, helping the team identify and resolve open commitments more efficiently
+
+---
+
+## Reflection
+
+This internship gave me hands-on experience working with real enterprise data in a corporate environment. One of the biggest lessons was understanding the gap between clean academic datasets and messy real-world data, a significant portion of the project time was spent on cleaning date and numeric formats before the data could even be loaded into MySQL. It was also meaningful to see the dashboard actually adopted by the team to replace their previous manual process, which made the impact of the work very concrete and tangible.
