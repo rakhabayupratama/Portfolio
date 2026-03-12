@@ -94,7 +94,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Fresh graduate in Informatics with a strong interest in data analytics, data science, and machine learning. Experienced in developing end-to-end machine learning projects and conducting data analysis. Proficient in Python, SQL, and Power BI. Analytical, reliable, and effective working independently or in teams.
+        Fresh graduate in Informatics from Telkom University (Cum Laude, GPA 3.56/4.00) with hands-on experience as a Data Analyst Intern at Telkomsel, where I automated reporting processes and delivered solutions. Skilled in Python, SQL, Power BI, and machine learning, with proven ability to turn complex data into actionable business insights.
       </>
     ),
   },
@@ -141,11 +141,7 @@ const about: About = {
       {
         title: "Certification",
         description: (
-          <>Credentials that validate my technical knowledge and commitment to continuous learning in the fields of data, AI, and cloud technology.{" "}
-            <a href="/Cert4228834162.pdf" target="_blank" rel="noopener noreferrer">
-              View Certificate →
-            </a>
-          </>
+          <>Credentials that validate my technical knowledge and commitment to continuous learning in the fields of data, AI, and cloud technology.</>
         ),
         tags: [
           {

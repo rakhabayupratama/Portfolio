@@ -309,6 +309,19 @@ export default function About() {
                         ))}
                       </Row>
                     )}
+                    {skill.title === "Certification" && (
+                      <Row paddingTop="8">
+                        <Button
+                          href="/Cert4228834162.pdf"
+                          variant="secondary"
+                          size="s"
+                          suffixIcon="arrowUpRight"
+                          target="_blank"
+                        >
+                          View Certificate
+                        </Button>
+                      </Row>
+                    )}
                     {skill.images && skill.images.length > 0 && (
                       <Row fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (
