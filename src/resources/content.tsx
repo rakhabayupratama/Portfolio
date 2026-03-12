@@ -87,7 +87,7 @@ const about: About = {
   },
   cv: {
     display: true,
-    link: "/Resume-Rakha Bayu Pratama-2026.pdf",
+    link: "/Rakha Bayu Pratama-Resume-2026.pdf",
   },
   intro: {
     display: true,
@@ -108,16 +108,16 @@ const about: About = {
         role: "Data Analyst Intern",
         achievements: [
           <>
-            Automated monthly asset capitalization reports by integrating Excel, MySQL (SQL queries), and Power BI, transforming manual reporting processes into a structured dashboard system.
+            Automated monthly asset capitalization reporting using Power BI and MySQL, cutting report generation time from 6–8 hours to under 5 minutes (+98% faster), replacing error-prone manual Excel workflows with a structured, interactive dashboard system.
           </>,
           <>
-            Designed and developed interactive dashboards to monitor financial and asset-related KPIs, enabling faster and more accurate management decision-making.
+            Processed and integrated 300,000+ rows of financial and asset data across Excel and MySQL through data cleaning, validation, and reconciliation, ensuring accuracy and consistency for management reporting.
           </>,
           <>
-            Performed data cleaning, validation, and reconciliation to ensure accuracy and consistency across multiple data sources.
+            Designed and deployed interactive KPI dashboards in Power BI to monitor financial and asset performance, enabling faster and more data-driven decision-making for the finance team.
           </>,
           <>
-            Improved reporting efficiency by reducing manual processing time and minimizing human error through data automation.
+            Presented dashboard solution directly to Manager, Team, and General Manager, adopted immediately for the August asset report and recognized by the Vice President, demonstrating direct business impact within the internship period.
           </>,
         ],
         images: [],
@@ -141,20 +141,16 @@ const about: About = {
       {
         title: "Certification",
         description: (
-          <>Credentials that validate my technical knowledge and commitment to continuous learning in the fields of data, AI, and cloud technology.</>
+          <>Credentials that validate my technical knowledge and commitment to continuous learning in the fields of data, AI, and cloud technology.{" "}
+            <a href="/Cert4228834162.pdf" target="_blank" rel="noopener noreferrer">
+              View Certificate →
+            </a>
+          </>
         ),
         tags: [
           {
             name: "Microsoft Certified: Azure AI Fundamentals",
             icon: "microsoftoffice",
-          },
-        ],
-        images: [
-          {
-            src: "/images/Cert4228834162.jpg",
-            alt: "Microsoft Certified: Azure AI Fundamentals",
-            width: 16,
-            height: 12,
           },
         ],
       },
@@ -200,7 +196,7 @@ const about: About = {
       {
         title: "Hard Skills",
         description: (
-          <>A versatile technical stack spanning data analysis, visualization, database management, and software development — built through coursework, projects, and hands-on internship experience.</>
+          <>A versatile technical stack spanning data analysis, visualization, database management, and software development, built through coursework, projects, and hands-on internship experience.</>
         ),
         tags: [
           {
@@ -278,6 +274,18 @@ const about: About = {
           {
             name: "Technical Writing",
             icon: "",
+          },
+          {
+            name: "GoLang",
+            icon: "golang",
+          },
+          {
+            name: "C++",
+            icon: "cplusplus",
+          },
+          {
+            name: "Flutter",
+            icon: "flutter",
           },
         ],
         images: [],

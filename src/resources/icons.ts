@@ -35,6 +35,9 @@ import {
   SiJupyter,
   SiLinux,
   SiLooker,
+  SiGo,
+  SiCplusplus,
+  SiFlutter
 } from "react-icons/si";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, FaJava, } from "react-icons/fa6";
@@ -90,6 +93,9 @@ export const iconLibrary: Record<string, IconType> = {
   jupyter: SiJupyter,
   microsoftfabric: BiLogoMicrosoft,
   linux: SiLinux,
+  golang: SiGo,
+  cplusplus: SiCplusplus,
+  flutter: SiFlutter,
 };
 
 export type IconLibrary = typeof iconLibrary;
